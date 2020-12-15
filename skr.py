@@ -44,14 +44,14 @@ total_stims_number = neu_number + sm_number
 
 
 
-txt_1 = u'В эксперименте вибрационная стимуляция будет чередоваться с картинками, на которых Вам будет необходимо сконцентрироваться и просчитывать элементы картинок про себя.'
+txt_1 = u'Последовательность картинок подготовлена. Нажмите "пробел" для старта.'
 txt_2 = u'Эксперимент завершен. Для выхода нажмите "пробел"'
 
 win = visual.Window([w, h], color=(config[2]))
 ISI = clock.StaticPeriod(win=win, screenHz=59, name='ISI')
 
 ####OPENING
-txt = visual.TextStim(win, text= u'Сейчас будет эксперимент по исследованию тактильной стимуляции.', font='Helvetica', pos=[0.5, 0])
+txt = visual.TextStim(win, text= u'Сейчас будет эксперимент. Нажмите "пробел" для подготовки', font='Helvetica', pos=[0.5, 0])
 txt.draw()
 win.flip()
 event.waitKeys(keyList=['space'])
@@ -70,7 +70,7 @@ for i in range (0, total_stims_number, 1):
         except:
             stims.append("utrecht/neutral/"+neutral_stims.pop())
 
-movs = [visual.ImageStim(win, image=i, mask=None, units='', pos=(0.0, 0.0), size=None, ori=0.0, color=(1.0, 1.0, 1.0), colorSpace='rgb', contrast=1.0, opacity=1.0, depth=0, interpolate=False, flipHoriz=False, flipVert=False, texRes=128, name=None, autoLog=None, maskParams=None) for i in stims]
+movs = [visual.ImageStim(win, image=i, mask=None, units='', pos=(0.0, 0.0), size=(0.9, 1.9), ori=0.0, color=(1.0, 1.0, 1.0), colorSpace='rgb', contrast=1.0, opacity=1.0, depth=0, interpolate=False, flipHoriz=False, flipVert=False, texRes=128, name=None, autoLog=None, maskParams=None) for i in stims]
 
 txt = visual.TextStim(win, text=txt_1, font='Helvetica', pos=[0.5, 0])
 txt.draw()
@@ -89,7 +89,7 @@ for a in range (0, total_stims_number, 1):
     ISI.start(isi_time)
     ISI.complete()
 
-txt = visual.TextStim(win, text=txt_1, font='Helvetica', pos=[0.5, 0])
+txt = visual.TextStim(win, text=txt_2, font='Helvetica', pos=[0.5, 0])
 txt.draw()
 win.flip()
 event.waitKeys(keyList=['space'])
